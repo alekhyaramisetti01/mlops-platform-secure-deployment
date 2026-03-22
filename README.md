@@ -156,7 +156,7 @@ http://127.0.0.1:8000/docs
 
 ---
 
-# 🔌 API Endpoints
+# API Endpoints
 
 ## Health Check
 
@@ -404,5 +404,3 @@ This project demonstrates:
 This is a **production-style MLOps platform** designed to showcase how machine learning systems can be built, secured, deployed, and monitored at scale using modern DevOps and cloud-native tools.
 
 ````
-
----

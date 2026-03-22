@@ -1,0 +1,25 @@
+replicaCount: 2
+
+image:
+  repository: secure-fraud-ml-api
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 80
+  targetPort: 8000
+
+env:
+  appEnv: dev
+  modelPath: model_artifacts/fraud_model.joblib
+
+secretName: fraud-api-secret
+
+resources:
+  requests:
+    cpu: "200m"
+    memory: "256Mi"
+  limits:
+    cpu: "500m"
+    memory: "512Mi"

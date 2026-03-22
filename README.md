@@ -402,5 +402,3 @@ This project demonstrates:
 #  Summary
 
 This is a **production-style MLOps platform** designed to showcase how machine learning systems can be built, secured, deployed, and monitored at scale using modern DevOps and cloud-native tools.
-
-````

@@ -6,27 +6,33 @@ This project focuses on **platform engineering principles applied to ML systems*
 
 ---
 
-#  Architecture
+## Architecture
 
-```
+```mermaid
+flowchart TD
+    A[Training Pipeline<br/>ml_pipeline/train.py] --> B[Model Artifact<br/>fraud_model.joblib]
 
-Training Pipeline
-↓
-Model Artifact (joblib)
-↓
-FastAPI Inference Service
-↓
-Docker Container
-↓
-Kubernetes Deployment (Helm)
-↓
-Environment Config + Secrets
-↓
-CI/CD Pipeline (GitHub Actions)
-↓
-Monitoring + Metrics (/metrics)
+    B --> C[FastAPI Inference Service<br/>app/main.py]
+    C --> D[Health Endpoint<br/>/health]
+    C --> E[Metrics Endpoint<br/>/metrics]
+    C --> F[Prediction Endpoint<br/>/predict]
 
-```
+    C --> G[Docker Image]
+    G --> H[Kubernetes Deployment]
+    H --> I[Helm Release]
+
+    J[Environment Config<br/>secrets/.env] --> C
+    K[Kubernetes Secret / Vault Pattern] --> H
+
+    L[GitHub Actions CI/CD] --> M[Run Training]
+    L --> N[Run Tests]
+    L --> O[Build Docker Image]
+    O --> G
+
+    P[Terraform IaC] --> Q[Resource Group / Cluster / Node Pool]
+    Q --> H
+
+    R[Prometheus / Monitoring Stack] --> E
 
 ---
 
